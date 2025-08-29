@@ -5,9 +5,9 @@
 
 ## Решение:
 
-Для переноса данных воспользуемся скриптом python.
+### 1. Для переноса данных воспользуемся скриптом python (файл import_excel).
 
-### После переноса данных переименуем столцбцы для дальнейшего удобства работы:
+### 2. После переноса данных переименуем столбцы для дальнейшего удобства работы:
 ``` sql
 ALTER TABLE portfolio_1 RENAME "Количество пролонгаций" TO renewals_amount;
 ALTER TABLE portfolio_1 RENAME "Сумма займа" TO loan_amount;
@@ -49,7 +49,7 @@ ALTER TABLE portfolio_2 RENAME "Было ли списание доп.услуг
 ALTER TABLE portfolio_2 RENAME "Сумма списания доп.услуг" TO addons_writeoff_amount;
 ALTER TABLE portfolio_2 RENAME "Сумма по исполнительным производс" TO enforcment_amount;
 ```
-### Для оценки качества портфеля сравним основные показатели:
+### 3. Для оценки качества портфеля сравним основные показатели:
 ```sql
 SELECT 
 	'Portfolio 1' as portfolio,
@@ -77,7 +77,7 @@ FROM portfolio_2
 ```
 <img width="1043" height="91" alt="{A02D6555-3278-4A74-940E-0E98E985A567}" src="https://github.com/user-attachments/assets/380c441a-e3d3-42ae-bbe4-6a5a9d319abf" />
 
-### Рассчитаем коэффициент возврата долга:
+### 4. Рассчитаем коэффициент возврата долга:
 
 ```sql
 SELECT 'Portfolio 1' as portfolio,
@@ -90,7 +90,7 @@ FROM portfolio_2;
 ```
 <img width="428" height="144" alt="image" src="https://github.com/user-attachments/assets/b502769a-1fa1-4742-88b7-4de5c529160f" />
 
-### Рассчитаем количество кредитов, сумму долга в разрезе дней просрочки для первого портфеля:
+### 5. Рассчитаем количество кредитов, сумму долга в разрезе дней просрочки для первого портфеля:
 
 ```sql
 SELECT 
@@ -111,7 +111,7 @@ ORDER BY portfolio, delinquency_bucket
 ```
 <img width="1018" height="200" alt="image" src="https://github.com/user-attachments/assets/0f0d86b9-8068-4fe0-af68-c5b3e529d8ef" />
 
-### Рассчитаем количество кредитов, сумму долга в разрезе дней просрочки для второго портфеля:
+### 6. Рассчитаем количество кредитов, сумму долга в разрезе дней просрочки для второго портфеля:
 
 ```sql
 SELECT 
